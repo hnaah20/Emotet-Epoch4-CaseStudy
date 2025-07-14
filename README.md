@@ -1,6 +1,5 @@
 # Emotet Epoch4 Spambot Infection – March 2023 PCAP Analysis
 
-**Author:** Hannah Susan Cherian  
 **Tools Used:** Wireshark, VirusTotal, Linux CLI  
 **File Hash:** 701c6abc5d4f1fafe912f494b4e72cfa
 
@@ -64,5 +63,16 @@ The objective of this case study was to analyze real-world Emotet spambot traffi
 
 See [`ioc_table.md`](ioc_table.md) for a full list of extracted indicators including domains, IPs, ports, JA3 hashes, and protocol data.
 
-## Repository Structure
+## Limitations
+
+- **Encrypted C2 content could not be analyzed** due to STARTTLS obfuscation. While TLS handshake was observed, the actual spam messages and C2 commands remain hidden.
+- **JA3 fingerprinting was conducted post-extraction**, but correlation with known threat actor infrastructure requires further enrichment.
+- **Only network-layer evidence was reviewed**. No host-based forensics (registry, memory, persistence) were performed in this case.
+- **Payload was not detonated** in a sandbox, so execution behavior was inferred based on VirusTotal and known Emotet indicators.
+- 
+## Author: 
+**Hannah Susan Cherian**
+CyberSecurity Student | DFIR Enthusiast
+
+
 
