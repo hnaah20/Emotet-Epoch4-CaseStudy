@@ -69,10 +69,10 @@ See [`ioc_table.md`](ioc_table.md) for a full list of extracted indicators inclu
 - **JA3 fingerprinting was conducted post-extraction**, but correlation with known threat actor infrastructure requires further enrichment.
 - **Only network-layer evidence was reviewed**. No host-based forensics (registry, memory, persistence) were performed in this case.
 - **Payload was not detonated** in a sandbox, so execution behavior was inferred based on VirusTotal and known Emotet indicators.
-- 
+  
 ## Author: 
 **Hannah Susan Cherian**
-CyberSecurity Student | DFIR Enthusiast
+- CyberSecurity Student | DFIR Enthusiast
 
 
 
