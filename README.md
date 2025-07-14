@@ -10,41 +10,41 @@ The objective of this case study was to analyze real-world Emotet spambot traffi
 ## Case Timeline and Observations
 
 ### 1. Payload Download via HTTP  
-- ![Payload Download](Screenshots/01_payload_zipfile.png) 
+![Payload Download](Screenshots/01_payload_zipfile.png) 
 - A suspicious `.zip` file was downloaded from `/wp-content/L/?160244` using HTTP.  
 - The hosting IP address was `101.99.3.20`.
 
 ### 2. Domain Resolution  
-- ![DNS Lookup](Screenshots/02_dnslookup.png)
+![DNS Lookup](Screenshots/02_dnslookup.png)
 - A DNS query was issued for `mtp.evotek.vn` (frame 10).  
 - The resolved IP matched the one serving the malicious payload.
 
 ### 3. SMTP Spambot Initialization  
-- ![SMTP Init](Screenshots/03_spambot_init.png) 
+![SMTP Init](Screenshots/03_spambot_init.png) 
 - The infected host attempted to initiate an SMTP session with `mail.sim23.ua` on port 25.  
 - The response included a `220 ESMTP` banner, indicating the beginning of a spam-sending attempt.
 
 ### 4. SMTP Blacklisting  
-- ![SMTP Blocked](Screenshots/04_spambot_blocked.png)  
+![SMTP Blocked](Screenshots/04_spambot_blocked.png)  
 - An additional SMTP connection to `173.66.46.97` failed due to Spamhaus blocking (`521 5.7.1`).  
 - This confirmed evasion attempts and blacklisting behavior.
 
 ### 5. STARTTLS Encryption  
-- ![STARTTLS Handshake](Screenshots/05_start_tlshandshake.png)
+![STARTTLS Handshake](Screenshots/05_start_tlshandshake.png)
 - The SMTP session upgraded to a secure channel using STARTTLS.  
 - TLS handshake (Client Hello, Certificate, Server Key Exchange) was visible, but the actual email content remained encrypted.
 
 ### 6. TCP Stream Extraction  
-- ![TCP Stream](Screenshots/06_follow_tcpstream.png) 
+![TCP Stream](Screenshots/06_follow_tcpstream.png) 
 - The ZIP payload was extracted using Wireshark’s Follow TCP Stream feature.  
 - The file was saved locally for verification.
 
 ### 7. Payload Hash and Verification  
-- ![VT File Check](Screenshots/07_file_check.png) 
+![VT File Check](Screenshots/07_file_check.png) 
 - The SHA256 hash of the payload (`701c6abc5d4f1fafe912f494b4e72cfa`) was computed and submitted to VirusTotal.
 
 ### 8. VirusTotal Results  
-- ![VT Detection](Screenshots/08_virustotal.png)
+![VT Detection](Screenshots/08_virustotal.png)
 - VirusTotal flagged the file with 50+ detections including aliases like Emotet, Trojan.Win32, and Injector.
 
 ## MITRE ATT&CK Summary
